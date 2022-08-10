@@ -20,11 +20,11 @@
 
         <td><%= booker.body %></td>
 
-        <td><%= link_to 'show',booker_path(booker.id) %></td>
+        <td><%= link_to 'show',book_path(booker.id) %></td>
 
-        <td><%= link_to 'Edit',edit_booker_path(booker.id) %></td>
+        <td><%= link_to 'Edit',edit_book_path(booker.id) %></td>
 
-        <td><%= link_to 'Destroy',booker_path(booker.id),method: :delete, "data-confirm" => "Are you sure?" %></td>
+        <td><%= link_to 'Destroy',book_path(booker.id),method: :delete, "data-confirm" => "Are you sure?" %></td>
     </tr>
     <% end %>
     </tbody>
