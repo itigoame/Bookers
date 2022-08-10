@@ -2,6 +2,7 @@
 
 <h1>Books</h1>
 
+<div class="inbox">
 <table>
     <thead>
     <tr>
@@ -13,6 +14,7 @@
     <tbody>
 
     <% @bookers.each do |booker| %>
+
     <tr>
         <td><%= booker.title %></td>
 
@@ -22,7 +24,7 @@
 
         <td><%= link_to 'Edit',edit_booker_path(booker.id) %></td>
 
-        <td><%= link_to 'Destroy',booker_path(booker.id) %></td>
+        <td><%= link_to 'Destroy',booker_path(booker.id),method: :delete, "data-confirm" => "Are you sure?" %></td>
     </tr>
     <% end %>
     </tbody>
@@ -31,16 +33,28 @@
 
 <h2>New Book</h2>
 
-<%= form_with model: @booker do |f| %>
+  <% if @booker.errors.any? %>
+  <div class="error-box">
+    <h3> <%= @booker.errors.count %> errors prohibited this book from being saved:</h3>
+      <ul>
+        <% @booker.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  </div>
+  <% end %>
 
-<div class="field"><p>Title</p>
-<%= f.text_field :title %></div>
+  <%= form_with model: @booker do |f| %>
 
-<div class="area"><p>Body</p>
-<%= f.text_area :body %></div>
+    <div class="field"><p>Title</p>
+      <%= f.text_field :title %></div>
 
-<%= f.submit'Create Book' %>
+    <div class="area"><p>Body</p>
+      <%= f.text_area :body %></div>
 
-<% end %>
+    <div class="submit"><%= f.submit'Create Book' %></div>
 
+  <% end %>
+
+</div>
 </div>

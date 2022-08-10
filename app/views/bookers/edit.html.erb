@@ -1,2 +1,36 @@
-<h1>Bookers#edit</h1>
-<p>Find me in app/views/bookers/edit.html.erb</p>
+<div class="box">
+
+<h1>Editing Book</h1>
+<div class="inbox">
+  
+  <% if @booker.errors.any? %>
+  <div class="error-box">
+    <h3><%= @booker.errors.count %> errors prohibited this book from being saved:</h3>
+      <ul>
+        <% @booker.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+  </div>
+  <% end %>
+
+  <dib class="flash">
+    <%= flash[:notice] %>
+  </dib>
+
+    <%= form_with model: @booker,url:booker_path(@booker.id),method: :patch do |f| %>
+
+    <div class="field"><p>Title</p>
+      <%= f.text_field :title %></div>
+
+    <div class="area"><p>Body</p>
+      <%= f.text_area :body %></div>
+
+    <div class="submit"><%= f.submit'Updatr Book' %></div>
+
+      <% end %>
+
+    <p><%= link_to 'Show',booker_path(@booker.id) %> | <%= link_to 'Back',bookers_path %></p>
+
+  </dib>
+</div>

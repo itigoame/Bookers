@@ -1,5 +1,14 @@
-<p><strong>Title:</strong><%= @booker.title %></p>
+<div class="box">
+ <div class="inbox">
+  <div class="flash">
+   <%= flash[:notice] %>
+  </div>
 
-<p><strong>Body:</strong><%= @booker.body %></p>
+    <p class="text-title"><strong>Title:</strong><%= @booker.title %></p>
 
-<p><%= link_to 'Edit',edit_booker_path %>|<%= link_to 'Back',bookers_path %></p>
+    <p class="text-body"><strong>Body:</strong><%= @booker.body %></p>
+
+    <p><%= link_to 'Edit',edit_booker_path %> | <%= link_to 'Back',bookers_path %></p>
+
+  </div>
+</div>
